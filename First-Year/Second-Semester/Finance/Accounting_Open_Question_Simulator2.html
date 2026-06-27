@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>סימולטור המבחן הרשמי: חברת אביב בע"מ</title>
+    <style>
+        :root {
+            --primary: #1a365d;
+            --secondary: #2b6cb0;
+            --bg: #f7fafc;
+            --border: #cbd5e0;
+            --text: #2d3748;
+            --success: #38a169;
+            --error: #e53e3e;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        h1 {
+            color: var(--primary);
+            text-align: center;
+            border-bottom: 3px solid var(--secondary);
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+        .story-box {
+            background-color: #ebf8ff;
+            border-right: 5px solid var(--secondary);
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+            font-size: 1.05em;
+        }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: white;
+        }
+        .data-table th, .data-table td {
+            border: 1px solid var(--border);
+            padding: 10px;
+            text-align: right;
+        }
+        .data-table th { background-color: #edf2f7; color: var(--primary); }
+        .section-card {
+            background: #fff;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+        .section-card h2 {
+            color: var(--primary);
+            margin-top: 0;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 10px;
+        }
+        .input-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            padding: 10px;
+            background: #f7fafc;
+            border-radius: 5px;
+        }
+        .input-row label {
+            flex: 1;
+            min-width: 250px;
+            font-weight: bold;
+        }
+        .input-row input {
+            padding: 8px 15px;
+            border: 1px solid #a0aec0;
+            border-radius: 5px;
+            font-size: 1.05em;
+            width: 150px;
+            text-align: left;
+            direction: ltr;
+        }
+        .hint-box {
+            width: 100%;
+            margin-top: 10px;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 0.95em;
+            display: none;
+            font-weight: 500;
+        }
+        .hint-box.error {
+            display: block;
+            background-color: #fff5f5;
+            color: var(--error);
+            border-right: 4px solid var(--error);
+        }
+        .hint-box.success {
+            display: block;
+            background-color: #f0fff4;
+            color: var(--success);
+            border-right: 4px solid var(--success);
+        }
+        .btn-check {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-top: 15px;
+            width: 100%;
+            transition: 0.3s;
+        }
+        .btn-check:hover { background: var(--primary); }
+        .report-table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        .report-table td { padding: 10px; border-bottom: 1px solid #e2e8f0; }
+        .report-table .indent { padding-right: 30px; color: #4a5568; }
+        .report-table .total { font-weight: bold; background: #edf2f7; }
+        .report-table input { width: 100%; padding: 6px; box-sizing: border-box; text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>סימולטור המבחן הרשמי: חברת אביב בע"מ</h1>
+        <p style="text-align: center; font-size: 1.1em; color: #4a5568;">זוהי שאלת ה-40 נקודות המדויקת מהבחינה. בצעו חישובים בצד ורשמו את התשובות כאן לבקרה ומשוב!</p>
+
+        <div class="story-box">
+            <h3 style="margin-top:0; color: var(--primary);">נתוני הפתיחה: מאזן ליום 31.12.2020 (יתרות ל-1.1.2021)</h3>
+            <table class="data-table">
+                <tr><th>נכסים</th><th>סכום (ש"ח)</th><th>התחייבויות והון עצמי</th><th>סכום (ש"ח)</th></tr>
+                <tr><td>עו"ש (בנק)</td><td>275,000</td><td>ספקים</td><td>16,000</td></tr>
+                <tr><td>לקוחות</td><td>35,200</td><td>שיקים לפירעון</td><td>38,000</td></tr>
+                <tr><td>שיקים לקבל</td><td>22,000</td><td>הלוואה לזמן קצר</td><td>96,000</td></tr>
+                <tr><td>מלאי (פתיחה)</td><td>118,000</td><td>הלוואה לזמן ארוך</td><td>60,000</td></tr>
+                <tr><td>השקעות</td><td>52,000</td><td>הון מניות</td><td>50,000</td></tr>
+                <tr><td>רכוש קבוע (עלות)</td><td>100,000</td><td>פרמיה</td><td>12,000</td></tr>
+                <tr><td>פחת נצבר</td><td><strong>? (לחשב מהנתונים)</strong></td><td><strong>עודפים</strong></td><td><strong>? (נעלם)</strong></td></tr>
+            </table>
+
+            <h3 style="color: var(--primary);">נתונים נוספים לתחילת השנה ולאירועי 2021:</h3>
+            <ol>
+                <li>הלוואה לזמן ארוך התקבלה ב-1.1.2019 נושאת ריבית שנתית בשיעור 4% <strong>משולמת בכל סוף שנה</strong>. (אל תשכחו לרשום את הפקודה ל-31.12.2021!)</li>
+                <li>שיקים לקבל מיועדים לפירעון (יופקדו בעו"ש) ב-14.6.2021.</li>
+                <li>רכוש קבוע נרכש ב-1.1.2020 מופחת על פני 5 שנים (עליכם לחשב את הפחת הנצבר שהיה ב-31.12.2020 ואת הוצאת הפחת של 2021).</li>
+                <li>מכירות החברה בשנת 2021 הסתכמו ב-1,500,000 ש"ח. התקבל בהעברה בנקאית 820,000 ש"ח, והיתרה באשראי.</li>
+                <li>קניות החברה בשנת 2021 הסתכמו ב-720,000 ש"ח. שולם בשיק מחצית מזה, והיתרה באשראי ספקים.</li>
+                <li>הוצאות החברה ששולמו השנה במזומן (עו"ש): שכר הנהלה 35,000 ש"ח, שכר שיווק 28,000 ש"ח, ארנונה הנהלה 33,000 ש"ח, הוצאות כלליות 62,000 ש"ח, הוצאות פרסום 18,000 ש"ח.</li>
+                <li>לקוחות שילמו חשבון חוב משנים קודמות 18,000 ש"ח בשיק.</li>
+                <li>החברה שילמה לספקים 12,500 ש"ח בשיק על חשבון חובות משנים קודמות.</li>
+                <li>מלאי סגירה לסוף השנה מסתכם ב-312,000 ש"ח.</li>
+                <li>החברה הנפיקה 100,000 מניות נוספות 1 ש"ח ערך נקוב תמורת 140,000 ש"ח.</li>
+                <li>החברה הכריזה ושילמה דיבידנד בסך 5,000 ש"ח בהעברה בנקאית.</li>
+            </ol>
+        </div>
+
+        <!-- שלב 1 -->
+        <div class="section-card" id="sec1">
+            <h2>שלב 1: השלמת נתוני הפתיחה (1.1.2021)</h2>
+            <div class="input-row">
+                <label>מהו הפחת הנצבר ההיסטורי ב-1.1.2021?</label>
+                <input type="text" id="dep_open" placeholder="הזן סכום...">
+                <div class="hint-box" id="hint_dep_open"></div>
+            </div>
+            <div class="input-row">
+                <label>מהי יתרת העודפים לפתיחת השנה?</label>
+                <input type="text" id="re_open" placeholder="הזן סכום...">
+                <div class="hint-box" id="hint_re_open"></div>
+            </div>
+            <button type="button" class="btn-check" onclick="checkSection(['dep_open', 're_open'])">בדוק שלב 1</button>
+        </div>
+
+        <!-- שלב 2 -->
+        <div class="section-card" id="sec2">
+            <h2>שלב 2: כרטיסי T (יתרות סגירה מעודכנות)</h2>
+            <p>רשמו לעצמכם פקודות יומן (אל תשכחו את סעיפים 1, 2 ו-3!), וחשבו את יתרת הסגירה (לפני עריכת הדוחות) של החשבונות הבאים:</p>
+            <div class="input-row">
+                <label>יתרת הסגירה של עו"ש בנק (חובה):</label>
+                <input type="text" id="cash_close">
+                <div class="hint-box" id="hint_cash_close"></div>
+            </div>
+            <div class="input-row">
+                <label>יתרת הסגירה של לקוחות (חובה):</label>
+                <input type="text" id="cust_close">
+                <div class="hint-box" id="hint_cust_close"></div>
+            </div>
+            <div class="input-row">
+                <label>יתרת הסגירה של ספקים (זכות):</label>
+                <input type="text" id="sup_close">
+                <div class="hint-box" id="hint_sup_close"></div>
+            </div>
+            <div class="input-row">
+                <label>יתרת הסגירה של פחת נצבר (זכות):</label>
+                <input type="text" id="dep_close">
+                <div class="hint-box" id="hint_dep_close"></div>
+            </div>
+            <button type="button" class="btn-check" onclick="checkSection(['cash_close','cust_close','sup_close','dep_close'])">בדוק שלב 2</button>
+        </div>
+
+        <!-- שלב 3 -->
+        <div class="section-card" id="sec3">
+            <h2>שלב 3: מאזן בוחן</h2>
+            <div class="input-row">
+                <label>מהו הסכום הכולל (סך החובה / סך הזכות) במאזן הבוחן?</label>
+                <input type="text" id="tb_sum">
+                <div class="hint-box" id="hint_tb_sum"></div>
+            </div>
+            <button type="button" class="btn-check" onclick="checkSection(['tb_sum'])">בדוק שלב 3</button>
+        </div>
+
+        <!-- שלב 4 -->
+        <div class="section-card" id="sec4">
+            <h2>שלב 4: דוח רווח והפסד (כולל ביאורים)</h2>
+            <table class="report-table">
+                <tr><td>מכירות</td><td><input type="text" id="pl_sales"></td></tr>
+                <tr><td colspan="2"><div class="hint-box" id="hint_pl_sales"></div></td></tr>
+                
+                <tr><td>(פחות) עלות המכר (הסבר 1)</td><td><input type="text" id="pl_cogs" placeholder="לדוגמה: -526000"></td></tr>
+                <tr><td colspan="2"><div class="hint-box" id="hint_pl_cogs"></div></td></tr>
+                
+                <tr class="total"><td>רווח גולמי</td><td><input type="text" id="pl_gross"></td></tr>
+                <tr><td colspan="2"><div class="hint-box" id="hint_pl_gross"></div></td></tr>
+                
+                <tr><td>(פחות) הוצאות מכירה ושיווק (הסבר 2)</td><td><input type="text" id="pl_marketing"></td></tr>
+                <tr><td colspan="2"><div class="hint-box" id="hint_pl_marketing"></div></td></tr>
+                
+                <tr><td>(פחות) הוצאות הנהלה וכלליות (הסבר 3)</td><td><input type="text" id="pl_ga"></td></tr>
+                <tr><td colspan="2"><div class="hint-box" id="hint_pl_ga"></div></td></tr>
+                
+                <tr class="total"><td>רווח תפעולי</td><td><input type="text" id="pl_op"></td></tr>
+                <tr><td colspan="2"><div class="hint-box" id="hint_pl_op"></div></td></tr>
+                
+                <tr><td>(פחות) הוצאות מימון (הסבר 4)</td><td><input type="text" id="pl_finance"></td></tr>
+                <tr><td colspan="2"><div class="hint-box" id="hint_pl_finance"></div></td></tr>
+                
+                <tr class="total"><td>רווח לפני מס</td><td><input type="text" id="pl_pretax"></td></tr>
+                <tr><td colspan="2"><div class="hint-box" id="hint_pl_pretax"></div></td></tr>
+                
+                <tr><td>(פחות) הוצאות מס חברות (אין נתון)</td><td><input type="text" id="pl_tax" value="0" disabled></td></tr>
+                
+                <tr class="total" style="background:#c6f6d5;"><td>רווח נקי סופי</td><td><input type="text" id="pl_net"></td></tr>
+                <tr><td colspan="2"><div class="hint-box" id="hint_pl_net"></div></td></tr>
+            </table>
+            <button type="button" class="btn-check" onclick="checkSection(['pl_sales','pl_cogs','pl_gross','pl_marketing','pl_ga','pl_op','pl_finance','pl_pretax','pl_net'])">בדוק דוח רווח והפסד</button>
+        </div>
+
+        <!-- שלב 5 ו-6 -->
+        <div class="section-card" id="sec5">
+            <h2>שלבים 5 ו-6: דוח ייעוד עודפים ומאזן סופי</h2>
+            <div class="input-row">
+                <label>יתרת העודפים הסופית (ל-31.12.2021):</label>
+                <input type="text" id="re_close">
+                <div class="hint-box" id="hint_re_close"></div>
+            </div>
+            
+            <table class="report-table">
+                <tr class="total"><td colspan="2" style="text-align:center;">נכסים (צד ימין)</td></tr>
+                <tr><td class="indent">סה"כ נכסים שוטפים (עו"ש, לקוחות, שיקים לקבל, מלאי סגירה)</td><td><input type="text" id="bs_assets_cur"></td></tr>
+                <tr><td colspan="2"><div class="hint-box" id="hint_bs_assets_cur"></div></td></tr>
+                
+                <tr><td class="indent">סה"כ נכסים בלתי שוטפים (השקעות, רכוש נטו)</td><td><input type="text" id="bs_assets_noncur"></td></tr>
+                <tr><td colspan="2"><div class="hint-box" id="hint_bs_assets_noncur"></div></td></tr>
+                
+                <tr class="total"><td>סך כל הנכסים</td><td><input type="text" id="bs_assets_tot"></td></tr>
+                <tr><td colspan="2"><div class="hint-box" id="hint_bs_assets_tot"></div></td></tr>
+                
+                <tr class="total"><td colspan="2" style="text-align:center; margin-top:10px;">התחייבויות והון עצמי (צד שמאל)</td></tr>
+                <tr><td class="indent">סה"כ התחייבויות שוטפות (ספקים, שיקים לפירעון, הלוואה ז"ק)</td><td><input type="text" id="bs_liab_cur"></td></tr>
+                <tr><td colspan="2"><div class="hint-box" id="hint_bs_liab_cur"></div></td></tr>
+
+                <tr><td class="indent">סה"כ התחייבויות לזמן ארוך</td><td><input type="text" id="bs_liab_noncur"></td></tr>
+                <tr><td colspan="2"><div class="hint-box" id="hint_bs_liab_noncur"></div></td></tr>
+                
+                <tr><td class="indent">סה"כ הון עצמי (מניות + פרמיה + עודפים סופיים)</td><td><input type="text" id="bs_equity"></td></tr>
+                <tr><td colspan="2"><div class="hint-box" id="hint_bs_equity"></div></td></tr>
+                
+                <tr class="total"><td>סך הכל התחייבויות והון עצמי</td><td><input type="text" id="bs_tot"></td></tr>
+                <tr><td colspan="2"><div class="hint-box" id="hint_bs_tot"></div></td></tr>
+            </table>
+            <button type="button" class="btn-check" onclick="checkSection(['re_close','bs_assets_cur','bs_assets_noncur','bs_assets_tot','bs_liab_cur', 'bs_liab_noncur', 'bs_equity','bs_tot'])">בדוק דוח סופי</button>
+        </div>
+
+    </div>
+
+    <script>
+        const answerKey = {
+            "dep_open": { val: 20000, hint: "הנכס נרכש ב-1.1.2020 ב-100,000 ש\"ח. אורך החיים 5 שנים. לכן פחת שנתי הוא 20,000 ש\"ח. מאחר ועברה בדיוק שנה אחת (עד 31.12.2020), הפחת הנצבר לתחילת השנה הוא 20,000." },
+            "re_open": { val: 310200, hint: "נכסים: עו\"ש(275k)+לקוחות(35.2k)+שיקים לקבל(22k)+מלאי(118k)+השקעות(52k)+רכוש(100k) פחות פחת נצבר שמצאת(20k) = 582,200. התחייבויות והון: ספקים(16k)+לפירעון(38k)+הלוואה ז\"ק(96k)+הלוואה ז\"א(60k)+מניות(50k)+פרמיה(12k) = 272,000. תחסיר כדי למצוא עודפים." },
+            "cash_close": { val: 719100, hint: "עבור צעד צעד: פתיחה 275,000 + 22,000 (שיק שנפרע) + 820,000 (מכירה) - 360,000 (קניות) - 176,000 (כל ההוצאות המזומנות) + 18,000 (תקבול לקוחות) - 12,500 (תשלום ספקים) + 140,000 (הנפקה) - 5,000 (דיבידנד) - 2,400 (ריבית!)." },
+            "cust_close": { val: 697200, hint: "פתיחה 35,200 + מכירות באשראי (680,000) - תשלום שקיבלנו מהלקוח (18,000)." },
+            "sup_close": { val: 363500, hint: "פתיחה 16,000 + קניות באשראי (360,000) - תשלום לספקים מהעו\"ש (12,500)." },
+            "dep_close": { val: 40000, hint: "פחת נצבר צובר משנה לשנה! 20,000 משנת 2020 (פתיחה) + עוד 20,000 פחת עבור 2021." },
+            "tb_sum": { val: 2921700, hint: "סכום המאזן בוחן הוא 2,921,700 בחובה וגם בזכות. ודא שלא שכחת שום חשבון (לרבות הוצאות פחת, הוצאות ריבית 2,400, ודיבידנד)." },
+            "pl_sales": { val: 1500000, hint: "סך המכירות נתון לך בשאלה במדויק. כולל המזומן והאשראי יחד." },
+            "pl_cogs": { val: -526000, hint: "מלאי פתיחה (118,000) + קניות (720,000) - מלאי סגירה לפי ספירה (312,000)." },
+            "pl_gross": { val: 974000, hint: "מכירות (1.5M) פחות עלות המכר (526k)." },
+            "pl_marketing": { val: -46000, hint: "שכר שיווק (28,000) + פרסום (18,000)." },
+            "pl_ga": { val: -150000, hint: "שכר הנהלה (35k) + ארנונה הנהלה (33k) + כלליות (62k) + הוצאות פחת! (20k)." },
+            "pl_op": { val: 778000, hint: "רווח גולמי (974k) פחות שיווק (46k) ופחות הנהלה (150k)." },
+            "pl_finance": { val: -2400, hint: "הוצאות ריבית על ההלוואה לזמן ארוך (60,000 * 4%)." },
+            "pl_pretax": { val: 775600, hint: "רווח תפעולי פחות הוצאות מימון." },
+            "pl_net": { val: 775600, hint: "בשאלה זו אין מיסים, ולכן הרווח לפני מס שווה לרווח הנקי." },
+            "re_close": { val: 1080800, hint: "עודפים לתחילת השנה (310,200) פלוס הרווח הנקי (775,600) פחות דיבידנד שחולק (5,000)." },
+            "bs_assets_cur": { val: 1728300, hint: "עו\"ש מעודכן (719,100) + לקוחות מעודכן (697,200) + מלאי סגירה (312,000). שים לב ששיקים לקבל אופס (נפרע ביוני)!" },
+            "bs_assets_noncur": { val: 112000, hint: "השקעות (52,000) + רכוש קבוע עלות (100,000) פחות פחת נצבר מעודכן (40,000)." },
+            "bs_assets_tot": { val: 1840300, hint: "חיבור נכסים שוטפים (1,728,300) עם בלתי שוטפים (112,000)." },
+            "bs_liab_cur": { val: 497500, hint: "ספקים (363,500) + הלוואה לזמן קצר (96,000) + שיקים לפרעון שנותרו במאזן (38,000)." },
+            "bs_liab_noncur": { val: 60000, hint: "הלוואה לזמן ארוך בלבד (60,000)." },
+            "bs_equity": { val: 1282800, hint: "הון מניות מעודכן (50k+100k=150k) + פרמיה מעודכנת (12k+40k=52k) + עודפים סופיים (1,080,800)." },
+            "bs_tot": { val: 1840300, hint: "חיבור סך ההתחייבויות (שוטף וארוך) וההון העצמי. המאזן מאוזן לחלוטין!" }
+        };
+
+        function checkSection(fieldIds) {
+            fieldIds.forEach(id => {
+                const inputElement = document.getElementById(id);
+                if (!inputElement) return;
+                
+                let rawVal = inputElement.value.replace(/,/g, '').trim();
+                if (rawVal.startsWith('(') && rawVal.endsWith(')')) {
+                    rawVal = '-' + rawVal.slice(1, -1);
+                }
+                let val = parseInt(rawVal);
+                let correctVal = answerKey[id].val;
+
+                const feedbackDiv = document.getElementById('hint_' + id);
+                feedbackDiv.className = 'hint-box'; 
+
+                if (isNaN(val)) {
+                    feedbackDiv.innerHTML = "אנא הזן מספר תקין.";
+                    feedbackDiv.classList.add('error');
+                    return;
+                }
+
+                if (val === correctVal || val === Math.abs(correctVal) || val === -Math.abs(correctVal)) {
+                    feedbackDiv.innerHTML = "✓ תשובה נכונה!";
+                    feedbackDiv.classList.add('success');
+                } else {
+                    feedbackDiv.innerHTML = "✗ " + answerKey[id].hint;
+                    feedbackDiv.classList.add('error');
+                }
+            });
+        }
+    </script>
+</body>
+</html>
