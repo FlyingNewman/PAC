@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>מאגר מבחנים במתמטיקה 1 - פתרונות מלאים</title>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #2980b9;
+            margin-top: 40px;
+            background-color: #ecf0f1;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .question-box {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .question {
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .btn-solution {
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+        .btn-solution:hover {
+            background-color: #217dbb;
+        }
+        .solution {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #fdfefe;
+            border-right: 4px solid #2ecc71;
+            border-radius: 4px;
+            font-size: 0.95em;
+        }
+        .step {
+            margin-bottom: 10px;
+        }
+    </style>
+    <script>
+        function toggleSolution(id) {
+            var el = document.getElementById(id);
+            if (el.style.display === "none" || el.style.display === "") {
+                el.style.display = "block";
+            } else {
+                el.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <h1>מאגר מבחנים במתמטיקה 1 - כולל פתרונות מלאים</h1>
+    <p>מאגר זה כולל 7 מבחנים המותאמים לרמת הקורס. לחצו על הכפתור מתחת לכל שאלה כדי להציג את הפתרון המלא והמפורט.</p>
+
+    <h2>מבחן דוגמא 1</h2>
+
+    <div class="question-box">
+        <div class="question">1. חשב את הגבול הבא: \( \lim_{x\to\infty}\left(\frac{-4x^2+8x+1}{-4x^2+3x-2}\right)^{11x-6} \) [cite: 44]</div>
+        <button class="btn-solution" onclick="toggleSolution('sol1-1')">הצג פתרון</button>
+        <div id="sol1-1" class="solution">
+            <div class="step"><strong>זיהוי סוג הגבול:</strong> בבסיס, החזקות הגבוהות זהות ולכן הגבול הוא המקדם שלהן \(\frac{-4}{-4} = 1\). במעריך, \(\lim_{x\to\infty} (11x-6) = \infty\). זהו מצב של \(1^\infty\).</div>
+            <div class="step"><strong>שימוש בנוסחת אוילר:</strong> נשתמש בכלל \( \lim_{x\to\infty} f(x)^{g(x)} = e^{\lim_{x\to\infty} g(x)(f(x)-1)} \).</div>
+            <div class="step"><strong>חישוב המעריך החדש:</strong>
+                <br>\( \lim_{x\to\infty} (11x-6) \left( \frac{-4x^2+8x+1}{-4x^2+3x-2} - 1 \right) \)
+                <br>\( = \lim_{x\to\infty} (11x-6) \left( \frac{-4x^2+8x+1 - (-4x^2+3x-2)}{-4x^2+3x-2} \right) \)
+                <br>\( = \lim_{x\to\infty} (11x-6) \left( \frac{5x+3}{-4x^2+3x-2} \right) \)
+                <br>\( = \lim_{x\to\infty} \frac{55x^2 + 33x - 30x - 18}{-4x^2+3x-2} \)
+            </div>
+            <div class="step"><strong>מסקנה:</strong> החזקה הגבוהה במונה ובמכנה היא 2. יחס המקדמים הוא \(\frac{55}{-4} = -13.75\). ולכן התשובה הסופית היא \( e^{-13.75} \) או \( e^{-\frac{55}{4}} \).</div>
+        </div>
+    </div>
+
+    <div class="question-box">
+        <div class="question">2. חשב את הגבול הבא: \( \lim_{x\to\infty}x^2\cdot\left(\sqrt{9x^4-11}-\sqrt{9x^4+12}\right) \) [cite: 46]</div>
+        <button class="btn-solution" onclick="toggleSolution('sol1-2')">הצג פתרון</button>
+        <div id="sol1-2" class="solution">
+            <div class="step"><strong>זיהוי:</strong> זהו מצב של \(\infty - \infty\). נכפול ונחלק בצמוד: \( \sqrt{9x^4-11}+\sqrt{9x^4+12} \).</div>
+            <div class="step"><strong>כפל בצמוד:</strong>
+                <br>\( \lim_{x\to\infty} x^2 \frac{(\sqrt{9x^4-11}-\sqrt{9x^4+12})(\sqrt{9x^4-11}+\sqrt{9x^4+12})}{\sqrt{9x^4-11}+\sqrt{9x^4+12}} \)
+                <br>\( = \lim_{x\to\infty} x^2 \frac{(9x^4-11) - (9x^4+12)}{\sqrt{9x^4-11}+\sqrt{9x^4+12}} \)
+                <br>\( = \lim_{x\to\infty} \frac{-23x^2}{\sqrt{9x^4-11}+\sqrt{9x^4+12}} \)
+            </div>
+            <div class="step"><strong>חישוב החזקות הגבוהות:</strong> במכנה נוציא \(x^4\) מהשורש (שהופך ל-\(x^2\)):
+                <br>\( = \lim_{x\to\infty} \frac{-23x^2}{x^2\sqrt{9-\frac{11}{x^4}} + x^2\sqrt{9+\frac{12}{x^4}}} \)
+            </div>
+            <div class="step"><strong>צמצום \(x^2\):</strong>
+                <br>\( = \frac{-23}{\sqrt{9} + \sqrt{9}} = \frac{-23}{3+3} = -\frac{23}{6} \).
+            </div>
+        </div>
+    </div>
+
+    <div class="question-box">
+        <div class="question">3. חשב את האינטגרל הבא: \( \int\frac{(7x^2-5x^2\cdot\sqrt{x})(8x\cdot\sqrt{x}-2x^3)}{x^2\cdot\sqrt{x}}dx \) [cite: 48]</div>
+        <button class="btn-solution" onclick="toggleSolution('sol1-3')">הצג פתרון</button>
+        <div id="sol1-3" class="solution">
+            <div class="step"><strong>פישוט באמצעות חזקות רציונליות:</strong> נזכור ש-\(\sqrt{x} = x^{0.5}\). 
+                <br>המונה: \( (7x^2 - 5x^{2.5})(8x^{1.5} - 2x^3) \)
+                <br>המכנה: \( x^2 \cdot x^{0.5} = x^{2.5} \)
+            </div>
+            <div class="step"><strong>פתיחת סוגריים במונה:</strong>
+                <br>\( 7x^2 \cdot 8x^{1.5} = 56x^{3.5} \)
+                <br>\( 7x^2 \cdot (-2x^3) = -14x^5 \)
+                <br>\( -5x^{2.5} \cdot 8x^{1.5} = -40x^4 \)
+                <br>\( -5x^{2.5} \cdot (-2x^3) = 10x^{5.5} \)
+                <br>מונה מפושט: \( 10x^{5.5} - 14x^5 - 40x^4 + 56x^{3.5} \)
+            </div>
+            <div class="step"><strong>חלוקה במכנה \(x^{2.5}\):</strong>
+                <br>\( \int (10x^3 - 14x^{2.5} - 40x^{1.5} + 56x) dx \)
+            </div>
+            <div class="step"><strong>אינטגרציה לפי כלל החזקה:</strong>
+                <br>\( = \frac{10x^4}{4} - \frac{14x^{3.5}}{3.5} - \frac{40x^{2.5}}{2.5} + \frac{56x^2}{2} + C \)
+                <br>\( = 2.5x^4 - 4x^{3.5} - 16x^{2.5} + 28x^2 + C \)
+            </div>
+        </div>
+    </div>
+
+    <div class="question-box">
+        <div class="question">4. מצא נקודות אי רציפות (במידה ויש) ומיין אותם: 
+            \( f(x)=\begin{cases}\frac{10}{1+e^{\frac{-3x^2}{(x-3)^2}}} & x\ne3\\ -2 & x=3\end{cases} \) [cite: 55]</div>
+        <button class="btn-solution" onclick="toggleSolution('sol1-4')">הצג פתרון</button>
+        <div id="sol1-4" class="solution">
+            <div class="step"><strong>חישוב ערך הפונקציה בנקודה:</strong> לפי הנתון, \( f(3) = -2 \).</div>
+            <div class="step"><strong>חישוב גבול הפונקציה כאשר \( x\to 3 \):</strong>
+                <br>נבחן את מעריך החזקה של ה-\(e\): \( \lim_{x\to 3} \frac{-3x^2}{(x-3)^2} \).
+                <br>כאשר \( x\to 3 \), המונה שואף ל-\(-27\) והמכנה שואף ל-\(0^+\) (תמיד חיובי בגלל הריבוע). לכן השבר שואף ל-\(-\infty\).
+                <br>ולכן \( e^{-\infty} \to 0 \).
+            </div>
+            <div class="step"><strong>הצבה בגבול הכולל:</strong>
+                <br>\( \lim_{x\to 3} f(x) = \frac{10}{1+0} = 10 \).
+            </div>
+            <div class="step"><strong>מסקנה:</strong> הגבול קיים וסופי (\(10\)), אך שונה מערך הפונקציה בנקודה (\(-2\)). זוהי <strong>אי רציפות סליקה (מהסוג הראשון)</strong> בנקודה \(x=3\).</div>
+        </div>
+    </div>
+
+    <div class="question-box">
+        <div class="question">5. גזור את הפונקציה הבאה: \( y=8e^{\sqrt{\frac{2x^3+5x^{-1}+4}{11x^{-3}+\sqrt{x}}}} \) [cite: 57]</div>
+        <button class="btn-solution" onclick="toggleSolution('sol1-5')">הצג פתרון</button>
+        <div id="sol1-5" class="solution">
+            <div class="step"><strong>כלל השרשרת:</strong> פונקציה מהצורה \( y = a\cdot e^{f(x)} \), נגזרתה היא \( y' = a\cdot e^{f(x)} \cdot f'(x) \).
+                <br>כאן נגדיר את הפונקציה הפנימית: \( g(x) = \frac{2x^3+5x^{-1}+4}{11x^{-3}+x^{0.5}} \) ולכן מעריך ה-\(e\) הוא \( \sqrt{g(x)} \).
+            </div>
+            <div class="step"><strong>נגזרת השורש:</strong> נגזרת של \( \sqrt{g(x)} \) היא \( \frac{1}{2\sqrt{g(x)}} \cdot g'(x) \).</div>
+            <div class="step"><strong>נגזרת המנה \(g'(x)\):</strong>
+                <br>מונה: \( u = 2x^3+5x^{-1}+4 \Rightarrow u' = 6x^2-5x^{-2} \)
+                <br>מכנה: \( v = 11x^{-3}+x^{0.5} \Rightarrow v' = -33x^{-4}+0.5x^{-0.5} \)
+                <br>\( g'(x) = \frac{u'v - uv'}{v^2} = \frac{(6x^2-5x^{-2})(11x^{-3}+x^{0.5}) - (2x^3+5x^{-1}+4)(-33x^{-4}+0.5x^{-0.5})}{(11x^{-3}+x^{0.5})^2} \)
+            </div>
+            <div class="step"><strong>הרכבת הפתרון הסופי:</strong>
+                <br>\( y' = 8e^{\sqrt{\frac{2x^3+5x^{-1}+4}{11x^{-3}+\sqrt{x}}}} \cdot \frac{1}{2\sqrt{\frac{2x^3+5x^{-1}+4}{11x^{-3}+\sqrt{x}}}} \cdot \left[ \frac{(6x^2-5x^{-2})(11x^{-3}+x^{0.5}) - (2x^3+5x^{-1}+4)(-33x^{-4}+0.5x^{-0.5})}{(11x^{-3}+x^{0.5})^2} \right] \)
+            </div>
+        </div>
+    </div>
+
+    <div class="question-box">
+        <div class="question">8. חקור את הפונקציה \( f(x)=\frac{-2x^2}{x^2-4x+3} \) לפי הסעיפים הבאים: ת.ה, חיתוך, עליה/ירידה, קיצון, אסימפטוטות ושרטוט. [cite: 58, 60-65]</div>
+        <button class="btn-solution" onclick="toggleSolution('sol1-8')">הצג פתרון</button>
+        <div id="sol1-8" class="solution">
+            <div class="step"><strong>א. תחום הגדרה:</strong> המכנה חייב להיות שונה מאפס. \( x^2-4x+3 \neq 0 \Rightarrow (x-1)(x-3) \neq 0 \). תחום הגדרה: \( x \neq 1, x \neq 3 \).</div>
+            <div class="step"><strong>ב. נקודות חיתוך עם הצירים:</strong>
+                <br>חיתוך עם ציר y (\(x=0\)): \( f(0) = \frac{-2(0)}{3} = 0 \Rightarrow (0,0) \).
+                <br>חיתוך עם ציר x (\(y=0\)): \( -2x^2 = 0 \Rightarrow x=0 \Rightarrow (0,0) \).
+            </div>
+            <div class="step"><strong>ג+ד. נגזרת, נקודות קיצון ותחומי עלייה וירידה:</strong>
+                <br>\( f'(x) = \frac{-4x(x^2-4x+3) - (-2x^2)(2x-4)}{(x^2-4x+3)^2} = \frac{-4x^3+16x^2-12x+4x^3-8x^2}{(x^2-4x+3)^2} = \frac{8x^2-12x}{(x^2-4x+3)^2} \)
+                <br>נשווה מונה לאפס: \( 4x(2x-3) = 0 \Rightarrow x=0, x=1.5 \).
+                <br>הצבה בטבלה (כולל נקודות אי ההגדרה 1, 3):
+                <br>- עבור \( x < 0 \): מציבים \(-1\), המונה חיובי. (עולה)
+                <br>- עבור \( 0 < x < 1 \): מציבים \(0.5\), המונה שלילי. (יורדת) $\Rightarrow$ מקסימום ב-\((0,0)\).
+                <br>- עבור \( 1 < x < 1.5 \): מציבים \(1.2\), המונה שלילי. (יורדת)
+                <br>- עבור \( 1.5 < x < 3 \): מציבים \(2\), המונה חיובי. (עולה) $\Rightarrow$ מינימום ב-\((1.5, 6)\).
+                <br>- עבור \( x > 3 \): מציבים \(4\), המונה חיובי. (עולה)
+            </div>
+            <div class="step"><strong>ה. אסימפטוטות:</strong>
+                <br><strong>אנכיות:</strong> מאפסות מכנה אך לא מונה: \( x=1, x=3 \).
+                <br><strong>אופקית:</strong> המעריך הגבוה שווה במונה ובמכנה (חזקת 2). היחס הוא \( y = \frac{-2}{1} = -2 \).
+            </div>
+            <div class="step"><strong>ו. שרטוט:</strong> (בבחינה יש לצייר את מערכת הצירים, לסמן אסימפטוטות בקווקוו, נקודות קיצון, ולחבר לפי העלייה/ירידה. ב-x=1 ו-x=3 הגרף שואף לאינסוף/מינוס אינסוף).</div>
+        </div>
+    </div>
+
+    <div class="question-box">
+        <div class="question">9. מצא את נקודות הפיתול ותחומי הקמירות והקעירות של הפונקציה הבאה: \( f(x)=2x^4-8x^3 \) [cite: 66, 67]</div>
+        <button class="btn-solution" onclick="toggleSolution('sol1-9')">הצג פתרון</button>
+        <div id="sol1-9" class="solution">
+            <div class="step"><strong>גזירה פעמיים:</strong>
+                <br>\( f'(x) = 8x^3 - 24x^2 \)
+                <br>\( f''(x) = 24x^2 - 48x \)
+            </div>
+            <div class="step"><strong>מציאת חשודות לפיתול:</strong> נשווה נגזרת שנייה לאפס:
+                <br>\( 24x(x - 2) = 0 \Rightarrow x=0, x=2 \)
+            </div>
+            <div class="step"><strong>טבלת סימנים (קמירות/קעירות):</strong>
+                <br>- עבור \( x < 0 \): \( f''(-1) > 0 \) (קמירות - צוחקת \(\cup\)).
+                <br>- עבור \( 0 < x < 2 \): \( f''(1) < 0 \) (קעירות - בוכה \(\cap\)).
+                <br>- עבור \( x > 2 \): \( f''(3) > 0 \) (קמירות - צוחקת \(\cup\)).
+            </div>
+            <div class="step"><strong>מסקנה:</strong> נקודות הפיתול הן ב-\( x=0 \) (ערך Y: \(0\)) וב-\( x=2 \) (ערך Y: \(-32\)). <br>תחומי קמירות כלפי מעלה: \( x<0 \) או \( x>2 \). קעירות כלפי מטה: \( 0<x<2 \).</div>
+        </div>
+    </div>
+
+    <h2>מבחן דוגמא 2</h2>
+
+    <div class="question-box">
+        <div class="question">1. חשב את הגבול הבא: \( \lim_{x\to\infty}\left(\frac{7x^2+6x-1}{7x^2-x-2}\right)^{6x-2} \) [cite: 5]</div>
+        <button class="btn-solution" onclick="toggleSolution('sol2-1')">הצג פתרון</button>
+        <div id="sol2-1" class="solution">
+            <div class="step"><strong>זיהוי:</strong> זהו גבול מהסוג של \(1^\infty\).</div>
+            <div class="step"><strong>יישום נוסחת אוילר \( e^{\lim g(x)(f(x)-1)} \):</strong>
+                <br>\( \lim_{x\to\infty} (6x-2) \left( \frac{7x^2+6x-1}{7x^2-x-2} - 1 \right) \)
+                <br>\( = \lim_{x\to\infty} (6x-2) \left( \frac{7x^2+6x-1 - (7x^2-x-2)}{7x^2-x-2} \right) \)
+                <br>\( = \lim_{x\to\infty} (6x-2) \left( \frac{7x+1}{7x^2-x-2} \right) \)
+                <br>\( = \lim_{x\to\infty} \frac{42x^2 + 6x - 14x - 2}{7x^2-x-2} \)
+            </div>
+            <div class="step"><strong>מסקנה:</strong> יחס המקדמים בחזקה הגבוהה הוא \(\frac{42}{7} = 6\). לכן הגבול הוא \( e^6 \).</div>
+        </div>
+    </div>
+
+    <div class="question-box">
+        <div class="question">2. חשב את הגבול הבא: \( \lim_{x\to\infty}x\cdot\left(\sqrt{6x^2-7}-\sqrt{6x^2-16}\right) \) [cite: 6]</div>
+        <button class="btn-solution" onclick="toggleSolution('sol2-2')">הצג פתרון</button>
+        <div id="sol2-2" class="solution">
+            <div class="step"><strong>כפל בצמוד:</strong>
+                <br>\( \lim_{x\to\infty} x \frac{(6x^2-7) - (6x^2-16)}{\sqrt{6x^2-7}+\sqrt{6x^2-16}} = \lim_{x\to\infty} \frac{9x}{\sqrt{6x^2-7}+\sqrt{6x^2-16}} \)
+            </div>
+            <div class="step"><strong>הוצאת גורם משותף מהשורש:</strong>
+                <br>נוציא \( x^2 \) מהשורש ונקבל \(x\).
+                <br>\( \lim_{x\to\infty} \frac{9x}{x\sqrt{6} + x\sqrt{6}} = \frac{9}{2\sqrt{6}} \).
+            </div>
+        </div>
+    </div>
+
+    <div class="question-box">
+        <div class="question">3. חשב את האינטגרל הבא: \( \int\frac{(7x^4-2x^2\cdot\sqrt{x})(4\sqrt{x}-2x)}{x^5\cdot\sqrt{x}}dx \) [cite: 8]</div>
+        <button class="btn-solution" onclick="toggleSolution('sol2-3')">הצג פתרון</button>
+        <div id="sol2-3" class="solution">
+            <div class="step"><strong>המרת שורשים לחזקות:</strong>
+                <br>מונה: \( (7x^4 - 2x^{2.5})(4x^{0.5} - 2x) \)
+                <br>מכנה: \( x^{5.5} \)
+            </div>
+            <div class="step"><strong>פתיחת סוגריים במונה:</strong>
+                <br>\( = 28x^{4.5} - 14x^5 - 8x^3 + 4x^{3.5} \)
+            </div>
+            <div class="step"><strong>חלוקה במכנה:</strong>
+                <br>\( \int \left( 28x^{-1} - 14x^{-0.5} - 8x^{-2.5} + 4x^{-2} \right) dx \)
+            </div>
+            <div class="step"><strong>אינטגרציה:</strong>
+                <br>\( = 28\ln|x| - \frac{14x^{0.5}}{0.5} - \frac{8x^{-1.5}}{-1.5} + \frac{4x^{-1}}{-1} + C \)
+                <br>\( = 28\ln|x| - 28\sqrt{x} + \frac{16}{3x^{1.5}} - \frac{4}{x} + C \)
+            </div>
+        </div>
+    </div>
+
+    <div class="question-box">
+        <div class="question">4. מצא נקודות אי רציפות (במידה ויש) ומיין אותם: 
+            \( f(x)=\begin{cases}\frac{14}{8x} & x\ne5\\ -7+e^{\frac{6x}{(6-x)^3}} & x=5\end{cases} \) [cite: 15, 16]</div>
+        <button class="btn-solution" onclick="toggleSolution('sol2-4')">הצג פתרון</button>
+        <div id="sol2-4" class="solution">
+            <div class="step"><strong>הערה:</strong> נבדוק רציפות בנקודת הפיצול \(x=5\). ייתכן שקיימות נקודות אי רציפות נוספות ב-\(x=0\) (אסימפטוטה אנכית בחלק העליון) וב-\(x=6\). נתמקד בפיצול.</div>
+            <div class="step"><strong>חישוב ערך הפונקציה ב-\(x=5\):</strong>
+                <br>\( f(5) = -7 + e^{\frac{30}{(6-5)^3}} = -7 + e^{30} \).
+            </div>
+            <div class="step"><strong>חישוב גבול הפונקציה כש-\(x\to 5\):</strong>
+                <br>\( \lim_{x\to 5} \frac{14}{8x} = \frac{14}{40} = 0.35 \).
+            </div>
+            <div class="step"><strong>מסקנה:</strong> הגבול קיים וסופי (0.35) אך שונה מערך הפונקציה בנקודה (מספר עצום, \(-7+e^{30}\)). לכן ב-\(x=5\) ישנה <strong>אי רציפות סליקה</strong>.
+            <br>* בנוסף, ב-\(x=0\) יש אי רציפות מסוג שני (אסימפטוטה אנכית).</div>
+        </div>
+    </div>
+
+    <div class="question-box">
+        <div class="question">5. גזור את הפונקציה הבאה: \( y=7\ln\left(\sqrt{\frac{9x^{-5}+7x^{-1}-3}{9\sqrt{x}+2x^{-7}+e^{-4x}}}\right) \) [cite: 21, 22]</div>
+        <button class="btn-solution" onclick="toggleSolution('sol2-5')">הצג פתרון</button>
+        <div id="sol2-5" class="solution">
+            <div class="step"><strong>פשט את הפונקציה תחילה!</strong> לפי חוקי לוגריתמים, \( \ln(\sqrt{A}) = \ln(A^{0.5}) = 0.5\ln(A) \). כמו כן \( \ln(A/B) = \ln(A) - \ln(B) \).
+                <br>\( y = 3.5 \left[ \ln(9x^{-5}+7x^{-1}-3) - \ln(9x^{0.5}+2x^{-7}+e^{-4x}) \right] \)
+            </div>
+            <div class="step"><strong>גזירה:</strong> כעת נגזרת של כל \( \ln(f(x)) \) היא פשוט \( \frac{f'(x)}{f(x)} \).
+                <br>\( y' = 3.5 \left[ \frac{-45x^{-6}-7x^{-2}}{9x^{-5}+7x^{-1}-3} - \frac{4.5x^{-0.5}-14x^{-8}-4e^{-4x}}{9x^{0.5}+2x^{-7}+e^{-4x}} \right] \)
+            </div>
+            <div class="step">זוהי דרך הרבה יותר קלה ומונעת טעויות של כלל המנה והשרשרת בבת אחת.</div>
+        </div>
+    </div>
+
+    <div class="question-box">
+        <div class="question">8. חקור את הפונקציה \( f(x)=\frac{4x^2}{3-x^2+2x} \) (ת.ה, חיתוך, קיצון, אסימפטוטות, תחומי עליה/ירידה). [cite: 23, 25-29]</div>
+        <button class="btn-solution" onclick="toggleSolution('sol2-8')">הצג פתרון</button>
+        <div id="sol2-8" class="solution">
+            <div class="step"><strong>א. תחום הגדרה:</strong> המכנה חייב להיות שונה מ-0: \( -x^2+2x+3 \neq 0 \Rightarrow x_{1,2} = \frac{-2\pm 4}{-2} \Rightarrow x \neq -1, x \neq 3 \).</div>
+            <div class="step"><strong>ב. חיתוך עם הצירים:</strong>
+                <br>\(x=0 \Rightarrow y=0\). ולכן \( (0,0) \).
+            </div>
+            <div class="step"><strong>ג+ד. קיצון ועלייה/ירידה:</strong>
+                <br>\( f'(x) = \frac{8x(-x^2+2x+3) - (4x^2)(-2x+2)}{(-x^2+2x+3)^2} = \frac{-8x^3+16x^2+24x+8x^3-8x^2}{(-x^2+2x+3)^2} = \frac{8x^2+24x}{(-x^2+2x+3)^2} \)
+                <br>\( 8x(x+3) = 0 \Rightarrow x=0, x=-3 \).
+                <br>בעזרת טבלה נמצא ש-\((-3, -3)\) היא נקודת מינימום מקומי (עובר מירידה לעליה), ו-\((0,0)\) היא מינימום מקומי (עובר מירידה לעליה... רגע!).
+                <br>נבדוק שוב בטבלה:
+                <br>\(x<-3\) נגזרת חיובית (עולה).
+                <br>\(-3<x<-1\) נגזרת שלילית (יורדת). \(\Rightarrow\) ב-\((-3,-3)\) יש <strong>מקסימום</strong>.
+                <br>\(-1<x<0\) נגזרת שלילית (יורדת).
+                <br>\(0<x<3\) נגזרת חיובית (עולה). \(\Rightarrow\) ב-\((0,0)\) יש <strong>מינימום</strong>.
+                <br>\(x>3\) נגזרת חיובית (עולה).
+            </div>
+            <div class="step"><strong>ה. אסימפטוטות:</strong>
+                <br>אנכיות: \( x=-1, x=3 \) (מאפסות מכנה בלבד).
+                <br>אופקית: חזקה 2 למעלה ולמטה. \( y = \frac{4}{-1} = -4 \).
+            </div>
+        </div>
+    </div>
+
+    <div class="question-box">
+        <div class="question">9. מצא את נקודות הפיתול ותחומי הקמירות והקעירות של הפונקציה הבאה: \( f(x)=5x^6+6x^5 \) [cite: 31, 32]</div>
+        <button class="btn-solution" onclick="toggleSolution('sol2-9')">הצג פתרון</button>
+        <div id="sol2-9" class="solution">
+            <div class="step"><strong>גזירה:</strong>
+                <br>\( f'(x) = 30x^5 + 30x^4 \)
+                <br>\( f''(x) = 150x^4 + 120x^3 \)
+            </div>
+            <div class="step"><strong>השוואה לאפס:</strong>
+                <br>\( 30x^3(5x+4) = 0 \Rightarrow x=0, x=-0.8 \)
+            </div>
+            <div class="step"><strong>טבלה (קמירות \(\cup\) / קעירות \(\cap\)):</strong>
+                <br>\( x < -0.8 \): \(f''(-1) = 150-120 = 30 > 0\) (קמירות \(\cup\)).
+                <br>\( -0.8 < x < 0 \): \(f''(-0.5) < 0\) (קעירות \(\cap\)).
+                <br>\( x > 0 \): \(f''(1) = 270 > 0\) (קמירות \(\cup\)).
+            </div>
+            <div class="step"><strong>מסקנה:</strong> נקודות הפיתול הן ב-\( x=-0.8 \) וב-\( x=0 \). קמירות: \( x < -0.8 \) או \( x > 0 \). קעירות: \( -0.8 < x < 0 \).</div>
+        </div>
+    </div>
+
+    <h2>מבחן 3 - תרגול נוסף</h2>
+
+    <div class="question-box">
+        <div class="question">1. חשב את הגבול הבא: \( \lim_{x\to\infty}\left(\frac{2x^2+3x-1}{2x^2-x+4}\right)^{5x} \)</div>
+        <button class="btn-solution" onclick="toggleSolution('sol3-1')">הצג פתרון</button>
+        <div id="sol3-1" class="solution">
+            <div class="step"><strong>זיהוי:</strong> גבול מהצורה \( 1^\infty \).</div>
+            <div class="step"><strong>שימוש בנוסחת אוילר:</strong>
+                <br>\( e^{\lim_{x\to\infty} 5x \left( \frac{2x^2+3x-1}{2x^2-x+4} - 1 \right)} \)
+                <br>\( = e^{\lim_{x\to\infty} 5x \left( \frac{4x-5}{2x^2-x+4} \right)} \)
+                <br>\( = e^{\lim_{x\to\infty} \frac{20x^2-25x}{2x^2-x+4}} \)
+            </div>
+            <div class="step"><strong>מסקנה:</strong> יחס המקדמים בחזקה הגבוהה הוא \( \frac{20}{2} = 10 \). התשובה היא \( e^{10} \).</div>
+        </div>
+    </div>
+
+    <div class="question-box">
+        <div class="question">2. חשב את הגבול הבא: \( \lim_{x\to\infty}x\cdot\left(\sqrt{4x^2+3}-\sqrt{4x^2-5}\right) \)</div>
+        <button class="btn-solution" onclick="toggleSolution('sol3-2')">הצג פתרון</button>
+        <div id="sol3-2" class="solution">
+            <div class="step"><strong>הכפלה בצמוד:</strong>
+                <br>\( \lim_{x\to\infty} x \frac{(4x^2+3) - (4x^2-5)}{\sqrt{4x^2+3}+\sqrt{4x^2-5}} = \lim_{x\to\infty} \frac{8x}{\sqrt{4x^2+3}+\sqrt{4x^2-5}} \)
+            </div>
+            <div class="step"><strong>חלוקה בחזקה הגבוהה:</strong> חלוקת מונה ומכנה ב-\(x\) (בתוך השורש נכנס כ-\(x^2\)):
+                <br>\( = \lim_{x\to\infty} \frac{8}{\sqrt{4+3/x^2}+\sqrt{4-5/x^2}} = \frac{8}{\sqrt{4}+\sqrt{4}} = \frac{8}{2+2} = 2 \).
+            </div>
+        </div>
+    </div>
+
+    <div class="question-box">
+        <div class="question">3. חשב את האינטגרל הבא: \( \int \frac{(x^3-2x\sqrt{x})(3x^2+\sqrt{x})}{x^2} dx \)</div>
+        <button class="btn-solution" onclick="toggleSolution('sol3-3')">הצג פתרון</button>
+        <div id="sol3-3" class="solution">
+            <div class="step"><strong>המרת שורשים ופישוט:</strong> מונה: \( (x^3 - 2x^{1.5})(3x^2 + x^{0.5}) \)
+                <br>פתיחת סוגריים: \( 3x^5 + x^{3.5} - 6x^{3.5} - 2x^2 = 3x^5 - 5x^{3.5} - 2x^2 \)
+            </div>
+            <div class="step"><strong>חלוקה במכנה \(x^2\):</strong>
+                <br>\( \int (3x^3 - 5x^{1.5} - 2) dx \)
+            </div>
+            <div class="step"><strong>אינטגרציה:</strong>
+                <br>\( = \frac{3x^4}{4} - \frac{5x^{2.5}}{2.5} - 2x + C = 0.75x^4 - 2x^{2.5} - 2x + C \)
+            </div>
+        </div>
+    </div>
+
+    <div class="question-box">
+        <div class="question">4. מצא וסווג נקודות אי רציפות: \( f(x) = \begin{cases} \frac{x^2-9}{x-3} & x \neq 3 \\ 6 & x=3 \end{cases} \)</div>
+        <button class="btn-solution" onclick="toggleSolution('sol3-4')">הצג פתרון</button>
+        <div id="sol3-4" class="solution">
+            <div class="step"><strong>ערך הפונקציה:</strong> \( f(3) = 6 \).</div>
+            <div class="step"><strong>גבול ב-\(x\to 3\):</strong>
+                <br>\( \lim_{x\to 3} \frac{(x-3)(x+3)}{x-3} = \lim_{x\to 3} (x+3) = 6 \).
+            </div>
+            <div class="step"><strong>מסקנה:</strong> הגבול שווה לערך הפונקציה. הפונקציה <strong>רציפה</strong> ב-\(x=3\).</div>
+        </div>
+    </div>
+
+    <div class="question-box">
+        <div class="question">5. גזור את הפונקציה: \( y=5e^{\sqrt{x^2+3x}} \)</div>
+        <button class="btn-solution" onclick="toggleSolution('sol3-5')">הצג פתרון</button>
+        <div id="sol3-5" class="solution">
+            <div class="step"><strong>כלל השרשרת:</strong> נגזור מבחוץ פנימה. נגזרת האקספוננט היא הוא עצמו, כפול נגזרת המעריך. נגזרת השורש כופלת בנגזרת הפנימית שלו.</div>
+            <div class="step"><strong>חישוב:</strong>
+                <br>\( y' = 5e^{\sqrt{x^2+3x}} \cdot \frac{1}{2\sqrt{x^2+3x}} \cdot (2x+3) \)
+                <br>\( = \frac{5(2x+3)e^{\sqrt{x^2+3x}}}{2\sqrt{x^2+3x}} \)
+            </div>
+        </div>
+    </div>
+
+    <div class="question-box">
+        <div class="question">8. חקור את הפונקציה \( f(x) = \frac{x^2}{x^2-1} \) (ת.ה, חיתוך, קיצון, אסימפטוטות, עליה/ירידה).</div>
+        <button class="btn-solution" onclick="toggleSolution('sol3-8')">הצג פתרון</button>
+        <div id="sol3-8" class="solution">
+            <div class="step"><strong>ת.ה:</strong> \( x^2-1 \neq 0 \Rightarrow x \neq 1, x \neq -1 \).</div>
+            <div class="step"><strong>חיתוך:</strong> \((0,0)\).</div>
+            <div class="step"><strong>נגזרת וקיצון:</strong>
+                <br>\( f'(x) = \frac{2x(x^2-1) - x^2(2x)}{(x^2-1)^2} = \frac{-2x}{(x^2-1)^2} \).
+                <br>השוואה לאפס: \( -2x = 0 \Rightarrow x=0 \).
+                <br>מונה חיובי עבור \(x<0\), שלילי עבור \(x>0\). ב-\((0,0)\) יש נקודת <strong>מקסימום</strong>. הפונקציה עולה עבור \(x<-1\) ו-\(-1<x<0\), יורדת עבור \(0<x<1\) ו-\(x>1\).
+            </div>
+            <div class="step"><strong>אסימפטוטות:</strong>
+                <br>אנכיות: \(x=1, x=-1\).
+                <br>אופקית: המעריך שווה, יחס מקדמים \( y=1 \).
+            </div>
+        </div>
+    </div>
+
+    <div class="question-box">
+        <div class="question">9. מצא נקודות פיתול, קמירות וקעירות: \( f(x) = x^4 - 6x^2 \)</div>
+        <button class="btn-solution" onclick="toggleSolution('sol3-9')">הצג פתרון</button>
+        <div id="sol3-9" class="solution">
+            <div class="step"><strong>נגזרות:</strong>
+                <br>\( f'(x) = 4x^3 - 12x \)
+                <br>\( f''(x) = 12x^2 - 12 \)
+            </div>
+            <div class="step"><strong>פיתול:</strong> נשווה לאפס: \( 12(x^2-1) = 0 \Rightarrow x=1, x=-1 \).</div>
+            <div class="step"><strong>מסקנה:</strong>
+                <br>קמירות כלפי מעלה \(\cup\): \( x>1 \) או \( x<-1 \) (הנגזרת השנייה חיובית).
+                <br>קעירות כלפי מטה \(\cap\): \( -1<x<1 \) (הנגזרת השנייה שלילית).
+                <br>נקודות פיתול קיימות ב-\(x=1\) (ערך y=-5) וב-\(x=-1\) (ערך y=-5).
+            </div>
+        </div>
+    </div>
+
+    <h2>מבחן 4 - תרגול נוסף</h2>
+
+    <div class="question-box">
+        <div class="question">1. חשב את הגבול: \( \lim_{x\to\infty} \left(\frac{x^2+5x}{x^2-2x}\right)^{3x} \)</div>
+        <button class="btn-solution" onclick="toggleSolution('sol4-1')">הצג פתרון</button>
+        <div id="sol4-1" class="solution">
+            <div class="step">\( e^{\lim_{x\to\infty} 3x \left(\frac{x^2+5x - (x^2-2x)}{x^2-2x}\right)} = e^{\lim_{x\to\infty} 3x \left(\frac{7x}{x^2-2x}\right)} = e^{\lim_{x\to\infty} \frac{21x^2}{x^2-2x}} \).
+            <br>יחס מקדמים: 21. תשובה: \( e^{21} \).</div>
+        </div>
+    </div>
+
+    <div class="question-box">
+        <div class="question">2. חשב את הגבול: \( \lim_{x\to\infty} x^2\left(\sqrt{x^4+5x^2}-\sqrt{x^4-3x^2}\right) \)</div>
+        <button class="btn-solution" onclick="toggleSolution('sol4-2')">הצג פתרון</button>
+        <div id="sol4-2" class="solution">
+            <div class="step">הכפלה בצמוד: 
+                <br>\( \lim_{x\to\infty} x^2 \frac{(x^4+5x^2) - (x^4-3x^2)}{\sqrt{x^4+5x^2}+\sqrt{x^4-3x^2}} = \lim_{x\to\infty} \frac{8x^4}{\sqrt{x^4+5x^2}+\sqrt{x^4-3x^2}} \)
+            </div>
+            <div class="step">הוצאת החזקה הגבוהה (\(x^2\)) מהשורש: במכנה נקבל \( x^2+x^2 = 2x^2 \). רגע, זה \( x^2\sqrt{1+...} \). אז:
+                <br>\( \lim_{x\to\infty} \frac{8x^4}{2x^2} \) שזה שואף לאינסוף!
+                <br>רגע, בואו נבדוק: המונה הוא \(8x^4\), המכנה הוא \( \sqrt{x^4} + \sqrt{x^4} = 2x^2 \). החזקה במונה גבוהה יותר. לכן הגבול הוא \( \infty \).
+            </div>
+        </div>
+    </div>
+
+    <div class="question-box">
+        <div class="question">3. חשב את האינטגרל: \( \int (x^2 - \frac{1}{x^2})^2 dx \)</div>
+        <button class="btn-solution" onclick="toggleSolution('sol4-3')">הצג פתרון</button>
+        <div id="sol4-3" class="solution">
+            <div class="step"><strong>פתיחת סוגריים (כפל מקוצר):</strong>
+                <br>\( (x^2 - x^{-2})^2 = x^4 - 2(x^2)(x^{-2}) + x^{-4} = x^4 - 2 + x^{-4} \)
+            </div>
+            <div class="step"><strong>אינטגרציה:</strong>
+                <br>\( \int (x^4 - 2 + x^{-4}) dx = \frac{x^5}{5} - 2x + \frac{x^{-3}}{-3} + C = 0.2x^5 - 2x - \frac{1}{3x^3} + C \)
+            </div>
+        </div>
+    </div>
+
+    <div class="question-box">
+        <div class="question">4. מצא וסווג נקודות אי רציפות: \( f(x) = \begin{cases} \frac{\sin(2x)}{x} & x \neq 0 \\ 2 & x=0 \end{cases} \)</div>
+        <button class="btn-solution" onclick="toggleSolution('sol4-4')">הצג פתרון</button>
+        <div id="sol4-4" class="solution">
+            <div class="step">על פי הגבול המוכר \( \lim_{x\to 0} \frac{\sin(ax)}{x} = a \), כאן הגבול הוא 2.</div>
+            <div class="step">כיוון ש-\( f(0) = 2 \), הגבול שווה לערך הפונקציה בנקודה ולכן הפונקציה <strong>רציפה</strong> לחלוטין.</div>
+        </div>
+    </div>
+
+    <div class="question-box">
+        <div class="question">5. גזור את הפונקציה: \( y = \ln\left(\frac{2x+1}{x-3}\right)^4 \)</div>
+        <button class="btn-solution" onclick="toggleSolution('sol4-5')">הצג פתרון</button>
+        <div id="sol4-5" class="solution">
+            <div class="step"><strong>פישוט בעזרת חוקי לוגריתמים:</strong>
+                <br>\( y = 4 \left( \ln(2x+1) - \ln(x-3) \right) \)
+            </div>
+            <div class="step"><strong>גזירה:</strong>
+                <br>\( y' = 4 \left( \frac{2}{2x+1} - \frac{1}{x-3} \right) \)
+                <br>קל ופשוט ללא הסתבכות עם כלל השרשרת המלא.
+            </div>
+        </div>
+    </div>
+
+    <div class="question-box">
+        <div class="question">8. חקור את הפונקציה: \( f(x) = \frac{2x}{x^2+1} \)</div>
+        <button class="btn-solution" onclick="toggleSolution('sol4-8')">הצג פתרון</button>
+        <div id="sol4-8" class="solution">
+            <div class="step"><strong>ת.ה:</strong> כל \(x\). המכנה תמיד חיובי.</div>
+            <div class="step"><strong>חיתוך:</strong> \((0,0)\).</div>
+            <div class="step"><strong>קיצון:</strong> \( f'(x) = \frac{2(x^2+1) - 2x(2x)}{(x^2+1)^2} = \frac{-2x^2+2}{(x^2+1)^2} \). השוואה לאפס נותנת \( x=\pm 1 \). 
+                <br>בעזרת טבלה מגלים מקסימום ב-\((1, 1)\) ומינימום ב-\((-1, -1)\).
+            </div>
+            <div class="step"><strong>אסימפטוטות:</strong> אין אנכיות. אופקית: החזקה הגבוהה במכנה, לכן \( y=0 \).</div>
+        </div>
+    </div>
+
+    <div class="question-box">
+        <div class="question">9. מצא פיתול וקמירות/קעירות: \( f(x) = 3x^5 - 5x^4 \)</div>
+        <button class="btn-solution" onclick="toggleSolution('sol4-9')">הצג פתרון</button>
+        <div id="sol4-9" class="solution">
+            <div class="step">\( f'(x) = 15x^4 - 20x^3 \)
+                <br>\( f''(x) = 60x^3 - 60x^2 = 60x^2(x-1) \)
+            </div>
+            <div class="step">השוואה לאפס: \( x=0, x=1 \).</div>
+            <div class="step">טבלה: עבור \(x<0\), \(f''<0\). עבור \(0<x<1\), \(f''<0\). עבור \(x>1\), \(f''>0\).
+                <br><strong>מסקנה:</strong> רק \(x=1\) היא נקודת פיתול אמיתית (יש שינוי סימן). הפונקציה קעורה מטה ב-\(x<1\) (למעט 0), וקמורה מעלה עבור \(x>1\).
+            </div>
+        </div>
+    </div>
+
+    <h2>מבחן 5 - תרגול נוסף</h2>
+    <div class="question-box">
+        <div class="question">1. חשב את הגבול: \( \lim_{x\to\infty} \left(\frac{3x^2-x+2}{3x^2+2x-1}\right)^{4x+1} \)</div>
+        <button class="btn-solution" onclick="toggleSolution('sol5-1')">הצג פתרון</button>
+        <div id="sol5-1" class="solution">
+            <div class="step">\( e^{\lim_{x\to\infty} (4x+1) \left(\frac{-3x+3}{3x^2+2x-1}\right)} = e^{\lim_{x\to\infty} \frac{-12x^2+\dots}{3x^2+\dots}} \). יחס המקדמים הוא \(-4\). התשובה היא \( e^{-4} \).</div>
+        </div>
+    </div>
+    <div class="question-box">
+        <div class="question">2. חשב את הגבול: \( \lim_{x\to\infty} x\cdot\left(\sqrt{x^2+8}-\sqrt{x^2-4}\right) \)</div>
+        <button class="btn-solution" onclick="toggleSolution('sol5-2')">הצג פתרון</button>
+        <div id="sol5-2" class="solution">
+            <div class="step">הכפלה בצמוד: \( \lim_{x\to\infty} \frac{12x}{\sqrt{x^2+8}+\sqrt{x^2-4}} \). חלוקה בחזקה הגבוהה \(x\) נותנת: \( \frac{12}{1+1} = 6 \).</div>
+        </div>
+    </div>
+    <div class="question-box">
+        <div class="question">3. חשב את האינטגרל: \( \int \frac{x^4-3x^2\sqrt{x}+2x}{\sqrt{x}} dx \)</div>
+        <button class="btn-solution" onclick="toggleSolution('sol5-3')">הצג פתרון</button>
+        <div id="sol5-3" class="solution">
+            <div class="step">חלוקת כל איבר ב-\(x^{0.5}\): \( \int (x^{3.5} - 3x^2 + 2x^{0.5}) dx \).
+            <br>תוצאה: \( \frac{x^{4.5}}{4.5} - x^3 + \frac{2x^{1.5}}{1.5} + C \).</div>
+        </div>
+    </div>
+    <div class="question-box">
+        <div class="question">4. מצא נקודות אי רציפות: \( f(x) = \begin{cases} \frac{e^{3x}-1}{x} & x \neq 0 \\ 3 & x=0 \end{cases} \)</div>
+        <button class="btn-solution" onclick="toggleSolution('sol5-4')">הצג פתרון</button>
+        <div id="sol5-4" class="solution">
+            <div class="step">על סמך הגבול המוכר \( \lim_{x\to 0} \frac{e^{ax}-1}{x} = a \), הגבול כאן הוא 3. כיוון שהערך בנקודה שווה ל-3, הפונקציה <strong>רציפה</strong>.</div>
+        </div>
+    </div>
+    <div class="question-box">
+        <div class="question">5. גזור את הפונקציה: \( y = e^{x^3} \cdot \ln(x^2+1) \)</div>
+        <button class="btn-solution" onclick="toggleSolution('sol5-5')">הצג פתרון</button>
+        <div id="sol5-5" class="solution">
+            <div class="step"><strong>כלל המכפלה (\(u'v + uv'\)):</strong>
+            <br>\( y' = (3x^2 e^{x^3}) \ln(x^2+1) + e^{x^3} \left(\frac{2x}{x^2+1}\right) \)</div>
+        </div>
+    </div>
+    <div class="question-box">
+        <div class="question">8. חקור את הפונקציה: \( f(x) = \frac{x^2-4}{x^2-9} \)</div>
+        <button class="btn-solution" onclick="toggleSolution('sol5-8')">הצג פתרון</button>
+        <div id="sol5-8" class="solution">
+            <div class="step">ת.ה: \(x \neq \pm 3\). חיתוך: \((0, 4/9), (\pm 2, 0)\).
+            <br>נגזרת: \( \frac{-10x}{(x^2-9)^2} \). מקסימום ב-\(x=0\).
+            <br>אסימפטוטות: אנכיות \(x=\pm 3\), אופקית \(y=1\).</div>
+        </div>
+    </div>
+    <div class="question-box">
+        <div class="question">9. פיתול וקמירות/קעירות: \( f(x) = x^4 - 4x^3 + 10 \)</div>
+        <button class="btn-solution" onclick="toggleSolution('sol5-9')">הצג פתרון</button>
+        <div id="sol5-9" class="solution">
+            <div class="step">\(f'' = 12x^2 - 24x = 12x(x-2)\). פיתול ב-\(x=0\) ו-\(x=2\). קעירות כלפי מטה ב-\(0<x<2\).</div>
+        </div>
+    </div>
+
+    <h2>מבחן 6 - תרגול נוסף</h2>
+    <div class="question-box">
+        <div class="question">1. חשב את הגבול: \( \lim_{x\to\infty} \left(\frac{5x^2+2x}{5x^2-3x}\right)^{2x} \)</div>
+        <button class="btn-solution" onclick="toggleSolution('sol6-1')">הצג פתרון</button>
+        <div id="sol6-1" class="solution">
+            <div class="step">\( e^{\lim_{x\to\infty} 2x \left(\frac{5x}{5x^2-3x}\right)} = e^2 \).</div>
+        </div>
+    </div>
+    <div class="question-box">
+        <div class="question">2. חשב את הגבול: \( \lim_{x\to\infty} x\cdot\left(\sqrt{9x^2+4x}-\sqrt{9x^2-2x}\right) \)</div>
+        <button class="btn-solution" onclick="toggleSolution('sol6-2')">הצג פתרון</button>
+        <div id="sol6-2" class="solution">
+            <div class="step">הכפלה בצמוד ופישוט נותנת: \( \lim_{x\to\infty} \frac{6x^2}{\sqrt{9x^2+...}+\sqrt{9x^2+...}} = \frac{6}{3+3} = 1 \).</div>
+        </div>
+    </div>
+    <div class="question-box">
+        <div class="question">3. חשב את האינטגרל: \( \int x^2\left(2x-\frac{3}{x^3}\right) dx \)</div>
+        <button class="btn-solution" onclick="toggleSolution('sol6-3')">הצג פתרון</button>
+        <div id="sol6-3" class="solution">
+            <div class="step">פתיחת סוגריים: \( \int (2x^3 - 3x^{-1}) dx = \frac{2x^4}{4} - 3\ln|x| + C = 0.5x^4 - 3\ln|x| + C \).</div>
+        </div>
+    </div>
+    <div class="question-box">
+        <div class="question">4. מצא נקודות אי רציפות: \( f(x) = \begin{cases} x \sin(\frac{1}{x}) & x \neq 0 \\ 0 & x=0 \end{cases} \)</div>
+        <button class="btn-solution" onclick="toggleSolution('sol6-4')">הצג פתרון</button>
+        <div id="sol6-4" class="solution">
+            <div class="step">לפי כלל הסנדוויץ', \(-1 \le \sin(1/x) \le 1\), ולכן כפל בפונקציה השואפת לאפס (\(x\)) שואף ל-0. רציפה לחלוטין.</div>
+        </div>
+    </div>
+    <div class="question-box">
+        <div class="question">5. גזור: \( y = \sqrt{\ln(x^2+5x)} \)</div>
+        <button class="btn-solution" onclick="toggleSolution('sol6-5')">הצג פתרון</button>
+        <div id="sol6-5" class="solution">
+            <div class="step">\( y' = \frac{1}{2\sqrt{\ln(x^2+5x)}} \cdot \frac{2x+5}{x^2+5x} \).</div>
+        </div>
+    </div>
+    <div class="question-box">
+        <div class="question">8. חקור: \( f(x) = \frac{x}{x^2-4} \)</div>
+        <button class="btn-solution" onclick="toggleSolution('sol6-8')">הצג פתרון</button>
+        <div id="sol6-8" class="solution">
+            <div class="step">ת.ה \(x \neq \pm 2\). חיתוך: \((0,0)\). נגזרת \( \frac{-(x^2+4)}{(x^2-4)^2} \). אין נקודות קיצון (הנגזרת תמיד שלילית, פונקציה יורדת בכל תחום הגדרתה).
+            <br>אסימפטוטות: אנכיות \(x=\pm 2\), אופקית \(y=0\).</div>
+        </div>
+    </div>
+    <div class="question-box">
+        <div class="question">9. פיתול: \( f(x) = \frac{x^3}{3} - 2x^2 + 3x \)</div>
+        <button class="btn-solution" onclick="toggleSolution('sol6-9')">הצג פתרון</button>
+        <div id="sol6-9" class="solution">
+            <div class="step">\(f'' = 2x - 4\). פיתול ב-\(x=2\).</div>
+        </div>
+    </div>
+
+    <h2>מבחן 7 - תרגול נוסף</h2>
+    <div class="question-box">
+        <div class="question">1. חשב גבול: \( \lim_{x\to\infty} \left(\frac{x^2-4x+1}{x^2+x-2}\right)^{x} \)</div>
+        <button class="btn-solution" onclick="toggleSolution('sol7-1')">הצג פתרון</button>
+        <div id="sol7-1" class="solution">
+            <div class="step">\( e^{\lim x \left(\frac{-5x+3}{x^2+x-2}\right)} = e^{-5} \).</div>
+        </div>
+    </div>
+    <div class="question-box">
+        <div class="question">2. חשב גבול: \( \lim_{x\to\infty} x^2\left(\sqrt{4x^4+x^2}-\sqrt{4x^4-x^2}\right) \)</div>
+        <button class="btn-solution" onclick="toggleSolution('sol7-2')">הצג פתרון</button>
+        <div id="sol7-2" class="solution">
+            <div class="step">כפל בצמוד: \( \lim \frac{2x^4}{\sqrt{4x^4+x^2}+\sqrt{4x^4-x^2}} = \frac{2}{\sqrt{4}+\sqrt{4}} = \frac{2}{4} = 0.5 \).</div>
+        </div>
+    </div>
+    <div class="question-box">
+        <div class="question">3. אינטגרל: \( \int \frac{5x^3-2x+1}{x^2} dx \)</div>
+        <button class="btn-solution" onclick="toggleSolution('sol7-3')">הצג פתרון</button>
+        <div id="sol7-3" class="solution">
+            <div class="step">חלוקה לכל איבר: \( \int (5x - \frac{2}{x} + x^{-2}) dx = 2.5x^2 - 2\ln|x| - \frac{1}{x} + C \).</div>
+        </div>
+    </div>
+    <div class="question-box">
+        <div class="question">4. אי רציפות: \( f(x) = \begin{cases} \frac{x^2-x-2}{x-2} & x \neq 2 \\ 3 & x=2 \end{cases} \)</div>
+        <button class="btn-solution" onclick="toggleSolution('sol7-4')">הצג פתרון</button>
+        <div id="sol7-4" class="solution">
+            <div class="step">פירוק מונה ל-\((x-2)(x+1)\). הגבול הוא 3. הפונקציה רציפה.</div>
+        </div>
+    </div>
+    <div class="question-box">
+        <div class="question">5. גזור: \( y = \frac{e^{2x}}{\ln(x)} \)</div>
+        <button class="btn-solution" onclick="toggleSolution('sol7-5')">הצג פתרון</button>
+        <div id="sol7-5" class="solution">
+            <div class="step">כלל המנה: \( y' = \frac{2e^{2x}\ln(x) - e^{2x}(1/x)}{(\ln(x))^2} \).</div>
+        </div>
+    </div>
+    <div class="question-box">
+        <div class="question">8. חקור: \( f(x) = \frac{x^2-1}{x^2+1} \)</div>
+        <button class="btn-solution" onclick="toggleSolution('sol7-8')">הצג פתרון</button>
+        <div id="sol7-8" class="solution">
+            <div class="step">ת.ה כל x. נגזרת \( \frac{4x}{(x^2+1)^2} \). מינימום ב-\( (0, -1) \). אסימפטוטה אופקית \(y=1\).</div>
+        </div>
+    </div>
+    <div class="question-box">
+        <div class="question">9. פיתול: \( f(x) = x^4 - 2x^2 + 5 \)</div>
+        <button class="btn-solution" onclick="toggleSolution('sol7-9')">הצג פתרון</button>
+        <div id="sol7-9" class="solution">
+            <div class="step">\(f'' = 12x^2 - 4\). פיתול ב-\( x = \pm\sqrt{1/3} \).</div>
+        </div>
+    </div>
+
+</body>
+</html>
